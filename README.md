@@ -4,46 +4,53 @@ Este projeto é uma aplicação Django para gerenciar propostas de empréstimos.
 
 ## Estrutura do projeto
 
-    loan_managment
-     ┣ loan_management
-     ┃ ┣ loan_management
-     ┃ ┃ ┣ __pycache__
-     ┃ ┃ ┣ asgi.py
-     ┃ ┃ ┣ celery.py
-     ┃ ┃ ┣ settings.py
-     ┃ ┃ ┣ urls.py
-     ┃ ┃ ┣ wsgi.py
-     ┃ ┃ ┗ __init__.py
-     ┃ ┣ proposals
-     ┃ ┃ ┣ migrations
-     ┃ ┃ ┣ static
-     ┃ ┃ ┣ __pycache__
-     ┃ ┃ ┣ admin.py
-     ┃ ┃ ┣ apps.py
-     ┃ ┃ ┣ models.py
-     ┃ ┃ ┣ serializers.py
-     ┃ ┃ ┣ services.py
-     ┃ ┃ ┣ tasks.py
-     ┃ ┃ ┣ tests.py
-     ┃ ┃ ┣ urls.py
-     ┃ ┃ ┣ views.py
-     ┃ ┃ ┗ __init__.py
-     ┃ ┣ create_superuser.py
-     ┃ ┣ db.sqlite3
-     ┃ ┗ manage.py
-     ┣ .env-example
-     ┣ docker-compose.yaml
-     ┣ Dockerfile
-     ┣ README.md
-     ┗ requirements.txt
+    📦loan_managment
+    ┣ 📂loan_management
+     ┃ ┣ 📂loan_management
+     ┃ ┃ ┣ 📜asgi.py
+     ┃ ┃ ┣ 📜celery.py
+     ┃ ┃ ┣ 📜settings.py
+     ┃ ┃ ┣ 📜urls.py
+     ┃ ┃ ┣ 📜wsgi.py
+     ┃ ┃ ┗ 📜__init__.py
+     ┃ ┣ 📂proposals
+     ┃ ┃ ┣ 📂migrations
+     ┃ ┃ ┃ ┣ 📜0001_initial.py
+     ┃ ┃ ┃ ┣ 📜0002_alter_proposal_cpf.py
+     ┃ ┃ ┃ ┣ 📜0003_alter_proposal_cpf.py
+     ┃ ┃ ┃ ┣ 📜0004_alter_proposal_cpf.py
+     ┃ ┃ ┃ ┣ 📜0005_alter_proposal_status.py
+     ┃ ┃ ┃ ┗ 📜__init__.py
+     ┃ ┃ ┣ 📂static
+     ┃ ┃ ┣ 📂tests
+     ┃ ┃ ┃ ┗ 📜test_proposals.py
+     ┃ ┃ ┣ 📜admin.py
+     ┃ ┃ ┣ 📜apps.py
+     ┃ ┃ ┣ 📜models.py
+     ┃ ┃ ┣ 📜serializers.py
+     ┃ ┃ ┣ 📜services.py
+     ┃ ┃ ┣ 📜tasks.py
+     ┃ ┃ ┣ 📜tests.py
+     ┃ ┃ ┣ 📜urls.py
+     ┃ ┃ ┣ 📜views.py
+     ┃ ┃ ┗ 📜__init__.py
+     ┃ ┣ 📜create_superuser.py
+     ┃ ┣ 📜db.sqlite3
+     ┃ ┣ 📜manage.py
+     ┃ ┗ 📜__init__.py
+     ┣ 📜.env-example
+     ┣ 📜docker-compose.yaml
+     ┣ 📜Dockerfile
+     ┣ 📜README.md
+     ┗ 📜requirements.txt
 
 ## Instalação
 
-1.  Primeiro, clone o repositório do projeto.
+1. Primeiro, clone o repositório do projeto.
 
 `git clone <URL do repositório>`
 
-2.  Construa e execute o projeto com Docker Compose.
+2. Construa e execute o projeto com Docker Compose.
 
 `docker-compose up --build -d`
 
@@ -65,7 +72,7 @@ Este projeto usa o Celery para tarefas assíncronas. As configurações do Celer
 
 ## Considerações
 
-1.  Criação Dinâmica de Campos no Django Admin
+1. Criação Dinâmica de Campos no Django Admin
 
 A capacidade de criar campos dinamicamente no Django admin é complexa e não é um recurso padrão do Django. Implementar essa funcionalidade pode adicionar uma camada significativa de complexidade ao projeto, além de possíveis problemas com gerenciamento de banco de dados e permissões de usuário. O Django puro pode não ser a ferramenta mais apropriada para essa tarefa.
 
@@ -74,14 +81,15 @@ Se a criação dinâmica de campos é um requisito essencial, pode ser mais apro
 No entanto, o escopo deste projeto sugere o uso de campos específicos. Portanto, preferi aderir ao uso de campos padrão no Django, conforme listado a seguir:
 
 - Nome Completo
+
 - CPF
+
 - Endereço
+
 - Valor do Empréstimo Pretendido
 
 Estes campos são mais do que suficientes para cumprir os requisitos do projeto e a implementação é significativamente simplificada em comparação com a criação dinâmica de campos.
 
-## Contribuição
+## Testes
 
-Pull requests são bem-vindos. Para mudanças maiores, por favor abra uma issue primeiro para discutir o que você gostaria de mudar.
-
-Por favor, certifique-se de atualizar os testes conforme apropriado.
+Criei testes unitários com as ferramentas do próprio django e podem ser encontrados em `loan_management\proposals\tests\test_proposals.py`
