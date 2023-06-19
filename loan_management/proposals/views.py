@@ -4,6 +4,12 @@ from .serializers import ProposalSerializer
 from .tasks import evaluate_proposal_task
 from .services import evaluate_proposal
 
+from django.shortcuts import render
+
+
+def proposal_form_view(request):
+    return render(request, "proposal_form.html")
+
 
 class ProposalViewSet(viewsets.ModelViewSet):
     queryset = Proposal.objects.all()

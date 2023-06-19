@@ -21,14 +21,14 @@ services:
   celery:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./Dockerfile
     depends_on:
       - rabbitmq
     environment:
       - CELERY_BROKER_URL=amqp://guest:guest@rabbitmq:5672//
       - CELERY_ACCEPT_CONTENT=json
       - CELERY_TASK_SERIALIZER=json
-    command: celery -A loan_managment worker --loglevel=info
+    command: celery -A loan_management worker --loglevel=info
     networks:
       - mynetwork
 
